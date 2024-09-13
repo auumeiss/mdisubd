@@ -36,16 +36,17 @@
 Перечень сущностей базы данных:
 Role (роли):
 
-    ID (PK, int)
-    Name(string)
-    Permission_id(int, not null, fk to permission)
+    ID (PK, int) -  Уникальный идентификатор.
+    Name(string) - Название роли. 
+    Permission_id(int, not null, fk to permission) - Внешний ключ на разрешения для роли - ManyToMany.
 Points (Пункты продаж):
 
     ID (PK, INT): Уникальный идентификатор пункта продаж.
     NameOfPoint (VARCHAR, 100): Название пункта продаж.
 
 User (пользователь):
-
+    
+    ID (PK, INT): Уникальный идентификатор
     Login (VARCHAR,50): Логин для авторизации.
     Password (VARCHAR,50): Пароль для авторизации.
     Email (VARCHAR,50): Электронная почта.
@@ -120,7 +121,8 @@ Furniture-OrderedFurn (Промежуточная таблица для связ
     OrderedFurn (FK, INT): Внешний ключ, ссылающийся на OrderedFurn.
 
 
-![БДШКИ drawio (1)](https://github.com/user-attachments/assets/41bb0ed7-7d94-4e26-bb1e-5d5e54c26eee)
+
+![БДШКИ drawio (2)](https://github.com/user-attachments/assets/df109473-7dc1-440b-b7a2-6a1b3710d2ac)
 
 
 
