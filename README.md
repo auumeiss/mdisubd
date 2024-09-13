@@ -37,21 +37,21 @@
 Points (Пункты продаж):
 
     ID (PK, INT): Уникальный идентификатор пункта продаж.
-    NameOfPoint (VARCHAR): Название пункта продаж.
+    NameOfPoint (VARCHAR, 100): Название пункта продаж.
 Seller (Продавец):
 
     ID (PK, INT): Уникальный идентификатор продавца.
-    CompanyName (VARCHAR): Название компании продавца.
-    Login (VARCHAR): Логин для авторизации.
-    Password (VARCHAR): Пароль для авторизации.
-    Email (VARCHAR): Электронная почта продавца.
-    Phone (VARCHAR): Телефон продавца.
+    CompanyName (VARCHAR,50): Название компании продавца.
+    Login (VARCHAR,50): Логин для авторизации.
+    Password (VARCHAR,50): Пароль для авторизации.
+    Email (VARCHAR,50): Электронная почта продавца.
+    Phone (VARCHAR,50): Телефон продавца.
     Points (FK, INT): Внешний ключ, ссылающийся на Points. - ManyToMany
 Furniture (Мебель):
 
     ID (PK, INT): Уникальный идентификатор мебели.
-    Name (VARCHAR): Название мебели.
-    Description (TEXT): Описание мебели.
+    Name (VARCHAR,50): Название мебели.
+    Description (TEXT,250): Описание мебели.
     Price (DECIMAL): Цена мебели.
     IsAvailable (BOOL): Доступность товара.
     Seller (FK, INT): Внешний ключ, ссылающийся на Seller - ManyToOne
@@ -59,7 +59,7 @@ Furniture (Мебель):
 FurnitureCategory (Категория мебели):
 
     ID (PK, INT): Уникальный идентификатор категории.
-    Category (VARCHAR): Название категории.
+    Category (VARCHAR,50): Название категории.
 Order (Заказ):
 
     ID (PK, INT): Уникальный идентификатор заказа.
@@ -75,28 +75,28 @@ OrderedFurn (Заказанная мебель):
 Customer (Покупатель):
     
     ID (PK, INT): Уникальный идентификатор покупателя.
-    Name (VARCHAR): Имя покупателя.
-    Login (VARCHAR): Логин покупателя.
-    Password (VARCHAR): Пароль покупателя.
-    Email (VARCHAR): Электронная почта покупателя.
+    Name (VARCHAR,50): Имя покупателя.
+    Login (VARCHAR,50): Логин покупателя.
+    Password (VARCHAR,50): Пароль покупателя.
+    Email (VARCHAR,50): Электронная почта покупателя.
 Reviews (Отзывы):
     
     ID (PK, INT): Уникальный идентификатор отзыва.
     Customer (FK, INT): Внешний ключ, ссылающийся на Customer - OneToOne
-    Text (TEXT): Текст отзыва.
+    Text (TEXT,250): Текст отзыва.
     Date (DATETIME): Дата оставления отзыва.
     Grade (INT): Оценка (1-5).
 Admin (Администратор):
 
     ID (PK, INT): Уникальный идентификатор администратора.
-    Login (VARCHAR): Логин администратора.
-    Password (VARCHAR): Пароль администратора.
-    Email (VARCHAR): Электронная почта администратора.
+    Login (VARCHAR,50): Логин администратора.
+    Password (VARCHAR,50): Пароль администратора.
+    Email (VARCHAR,50): Электронная почта администратора.
 ActionLog (Журнал действий):
 
     ID (PK, INT): Уникальный идентификатор записи журнала.
     Customer (FK, INT): Внешний ключ, ссылающийся на Customer - ManyToOne
-    Action (VARCHAR): Действие, совершенное пользователем.
+    Action (VARCHAR,250): Действие, совершенное пользователем.
     Date (DATETIME): Дата и время действия.
 Points-Seller (Промежуточная таблица для связи пунктов продаж и продавцов):
 
