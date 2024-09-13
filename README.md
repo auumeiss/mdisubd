@@ -34,19 +34,30 @@
 
 
 Перечень сущностей базы данных:
+Role (роли):
+
+    ID (PK, int)
+    Name(string)
+    Permission_id(int, not null, fk to permission)
 Points (Пункты продаж):
 
     ID (PK, INT): Уникальный идентификатор пункта продаж.
     NameOfPoint (VARCHAR, 100): Название пункта продаж.
+
+User (пользователь):
+
+    Login (VARCHAR,50): Логин для авторизации.
+    Password (VARCHAR,50): Пароль для авторизации.
+    Email (VARCHAR,50): Электронная почта.
+    Role_ID(INT) - Ключ, ссылающийся на роль - OneToMany
+    
 Seller (Продавец):
 
     ID (PK, INT): Уникальный идентификатор продавца.
     CompanyName (VARCHAR,50): Название компании продавца.
-    Login (VARCHAR,50): Логин для авторизации.
-    Password (VARCHAR,50): Пароль для авторизации.
-    Email (VARCHAR,50): Электронная почта продавца.
     Phone (VARCHAR,50): Телефон продавца.
     Points (FK, INT): Внешний ключ, ссылающийся на Points. - ManyToMany
+    User_Id(INT, not null) - Внешний ключ, ссылающийся на User - OneToOne
 Furniture (Мебель):
 
     ID (PK, INT): Уникальный идентификатор мебели.
@@ -65,8 +76,9 @@ Order (Заказ):
     ID (PK, INT): Уникальный идентификатор заказа.
     Date (DATETIME): Дата создания заказа.
     isOrdered (BOOL): Статус заказа.
-    User (FK, INT): Внешний ключ, ссылающийся на Customer - OneToOne
+    User_id (FK, INT): Внешний ключ, ссылающийся на Customer - ManyToOne
     Price (DECIMAL): Общая стоимость заказа.
+    OrderedFurniture_id (int, not null, FK to "OrderedFurn") - Внешний ключ на OrderedFurn - OneToMany
 OrderedFurn (Заказанная мебель):
 
     ID (PK, INT): Уникальный идентификатор записи.
@@ -75,27 +87,25 @@ OrderedFurn (Заказанная мебель):
 Customer (Покупатель):
     
     ID (PK, INT): Уникальный идентификатор покупателя.
-    Name (VARCHAR,50): Имя покупателя.
-    Login (VARCHAR,50): Логин покупателя.
-    Password (VARCHAR,50): Пароль покупателя.
-    Email (VARCHAR,50): Электронная почта покупателя.
-Reviews (Отзывы):
+    Name(VARCHAR, 50) : Имя пользователя
+    Surname(VARCHAR, 50) - Фамилия
+    Phone (VARCHAR, 50) - Телефон
+    User_Id(int, not null, FK to User) - Внешний ключ на пользователя, OneToOne
+Reviews (Отзывы)
     
     ID (PK, INT): Уникальный идентификатор отзыва.
-    Customer (FK, INT): Внешний ключ, ссылающийся на Customer - OneToOne
+    User (FK, INT): Внешний ключ, ссылающийся на User - OneToOne
     Text (TEXT,250): Текст отзыва.
     Date (DATETIME): Дата оставления отзыва.
     Grade (INT): Оценка (1-5).
 Admin (Администратор):
 
     ID (PK, INT): Уникальный идентификатор администратора.
-    Login (VARCHAR,50): Логин администратора.
-    Password (VARCHAR,50): Пароль администратора.
-    Email (VARCHAR,50): Электронная почта администратора.
+    User_Id(int, not null, FK to User) - Внешний ключ на пользователя, OneToOne
 ActionLog (Журнал действий):
 
     ID (PK, INT): Уникальный идентификатор записи журнала.
-    Customer (FK, INT): Внешний ключ, ссылающийся на Customer - ManyToOne
+    User_id (FK, INT): Внешний ключ, ссылающийся на User - ManyToOne
     Action (VARCHAR,250): Действие, совершенное пользователем.
     Date (DATETIME): Дата и время действия.
 Points-Seller (Промежуточная таблица для связи пунктов продаж и продавцов):
