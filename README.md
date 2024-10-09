@@ -9,7 +9,6 @@
   Авторизация и аутентификация пользователей:
 
     Поддержка различных ролей (покупатель, продавец, администратор).
-    Разграничение прав доступа в зависимости от роли пользователя.
 
   Неавторизованный пользователь:
   
@@ -49,11 +48,7 @@
 
 
 Перечень сущностей базы данных:
-Role (роли):
 
-    ID (PK, int) -  Уникальный идентификатор.
-    Name(string) - Название роли. 
-    Permission_id(int, not null, fk to permission) - Внешний ключ на разрешения для роли - ManyToMany.
 Points (Пункты продаж):
 
     ID (PK, INT): Уникальный идентификатор пункта продаж.
@@ -65,7 +60,6 @@ User (пользователь):
     Login (VARCHAR,50): Логин для авторизации.
     Password (VARCHAR,50): Пароль для авторизации.
     Email (VARCHAR,50): Электронная почта.
-    Role_ID(INT) - Ключ, ссылающийся на роль - OneToMany
     
 Seller (Продавец):
 
@@ -135,8 +129,9 @@ Furniture-OrderedFurn (Промежуточная таблица для связ
     Furniture (FK, INT): Внешний ключ, ссылающийся на Furniture.
     OrderedFurn (FK, INT): Внешний ключ, ссылающийся на OrderedFurn.
 
+![БДШКИ drawio (4)](https://github.com/user-attachments/assets/51b64a27-255f-4ec9-87e1-cafcb05fd3eb)
 
-![БДШКИ drawio (3)](https://github.com/user-attachments/assets/a0dfcbd8-bfbb-4550-82ed-0f899e87cb39)
+
 
 
 
