@@ -129,7 +129,8 @@ Furniture-OrderedFurn (Промежуточная таблица для связ
     Furniture (FK, INT): Внешний ключ, ссылающийся на Furniture.
     OrderedFurn (FK, INT): Внешний ключ, ссылающийся на OrderedFurn.
 
-![БДШКИ drawio (4)](https://github.com/user-attachments/assets/51b64a27-255f-4ec9-87e1-cafcb05fd3eb)
+
+![БДШКИ drawio (5)](https://github.com/user-attachments/assets/e104107d-0fd5-49b3-a4ff-c5d49ad64df2)
 
 
 
